@@ -1,0 +1,19 @@
+apiVersion: backstack.cncf.io/v1alpha1
+kind: AKSCluster
+metadata:
+  name: demostupid
+  namespace: default
+spec:
+  parameters:
+    id: demostupid
+    region: Australia East
+    version: 1.27.3
+    nodes:
+      count: 1
+      instanceType: Standard_B2s
+  writeConnectionSecretToRef:
+    name: demostupid-kubeconfig
+  publishConnectionDetailsTo:
+    name: demostupid/demostupid-kubeconfig
+    configRef:
+      name: vault
