@@ -1,3 +1,5 @@
 .env
 .cnab
 .DS_Store
+azure-credentials.json
+backstage-secret.yml
