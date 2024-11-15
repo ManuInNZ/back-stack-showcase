@@ -1,0 +1,26 @@
+# komoplane Ingress controller
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: selfsigned-cluster-issuer
+  name: komoplane-ingress
+  namespace: komoplane
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: komoplane-7f000001.nip.io
+    http:
+      paths:
+      - backend:
+          service:
+            name: komoplane
+            port:
+              number: 8090
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - komoplane-7f000001.nip.io
+    secretName: komoplane-tls
+
